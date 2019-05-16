@@ -4,18 +4,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 
-namespace ContosoPets.Ui.Areas.Admin.Pages
+namespace ContosoPets.Ui.Areas.Admin.Pages.Products
 {
-    public class CreateModel : PageModel
+    public class EditModel : PageModel
     {
         private readonly ProductService _productService;
 
         [BindProperty]
         public Product Product { get; set; }
 
-        public CreateModel(ProductService productService)
+        public EditModel(ProductService productService)
         {
             _productService = productService;
+        }
+
+        public async Task OnGet(int id)
+        {
+            Product = await _productService.GetProductById(id);
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -25,9 +30,9 @@ namespace ContosoPets.Ui.Areas.Admin.Pages
                 return Page();
             }
 
-            await _productService.CreateProduct(Product);
+            await _productService.UpdateProduct(Product);
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Products/Index");
         }
     }
 }

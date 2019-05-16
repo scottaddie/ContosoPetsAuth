@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoPets.Ui", "src\ContosoPets.Ui\ContosoPets.Ui.csproj", "{E63C3FA3-305F-4BDF-8AB8-3940B856FFF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FCB32379-0133-48B5-A046-5D0559590A3B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E63C3FA3-305F-4BDF-8AB8-3940B856FFF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63C3FA3-305F-4BDF-8AB8-3940B856FFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63C3FA3-305F-4BDF-8AB8-3940B856FFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63C3FA3-305F-4BDF-8AB8-3940B856FFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27AC16DB-6761-453D-B921-EDCDAAC88F35}
+	EndGlobalSection
+EndGlobal

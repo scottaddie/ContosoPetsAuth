@@ -8,20 +8,20 @@ namespace ContosoPets.Ui.Services
 {
     public class ProductService
     {
+        private readonly string _route;
         private readonly HttpClient _httpClient;
-        private readonly string _endpointUrl;
 
         public ProductService(
             HttpClient httpClient,
             IConfiguration configuration)
         {
             _httpClient = httpClient;
-            _endpointUrl = configuration["ProductServiceUrl"];
+            _route = configuration["ProductService:ControllerRoute"];
         }
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            var response = await _httpClient.GetAsync($"{_endpointUrl}/api/products");
+            var response = await _httpClient.GetAsync(_route);
             response.EnsureSuccessStatusCode();
 
             var products = await response.Content.ReadAsAsync<IEnumerable<Product>>();
@@ -31,7 +31,7 @@ namespace ContosoPets.Ui.Services
 
         public async Task<Product> GetProductById(int productId)
         {
-            var response = await _httpClient.GetAsync($"{_endpointUrl}/api/products/{productId}");
+            var response = await _httpClient.GetAsync($"{_route}/{productId}");
             response.EnsureSuccessStatusCode();
 
             var product = await response.Content.ReadAsAsync<Product>();
@@ -41,17 +41,17 @@ namespace ContosoPets.Ui.Services
 
         public async Task UpdateProduct(Product product)
         {
-            await _httpClient.PutAsJsonAsync<Product>($"{_endpointUrl}/api/products/{product.Id}", product);
+            await _httpClient.PutAsJsonAsync<Product>($"{_route}/{product.Id}", product);
         }
 
         public async Task CreateProduct(Product product)
         {
-            await _httpClient.PostAsJsonAsync<Product>($"{_endpointUrl}/api/products", product);
+            await _httpClient.PostAsJsonAsync<Product>($"{_route}", product);
         }
 
         public async Task DeleteProduct(int productId)
         {
-            await _httpClient.DeleteAsync($"{_endpointUrl}/api/products/{productId}");
+            await _httpClient.DeleteAsync($"{_route}/{productId}");
         }
     }
 }

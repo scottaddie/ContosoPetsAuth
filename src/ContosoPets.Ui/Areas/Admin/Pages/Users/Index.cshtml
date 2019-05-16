@@ -1,22 +1,22 @@
 ﻿@page
-@model ContosoPets.Ui.Areas.Admin.Pages.IndexModel
+@model ContosoPets.Ui.Areas.Admin.Pages.Users.IndexModel
 @{
-    ViewData["Title"] = "Admin Index";
+    ViewData["Title"] = "User Administration";
 }
 
-<h1>Product Administration</h1>
+<h1>User Administration</h1>
 
 <form method="post">
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
+                <th scope="col">User</th>
+                <th scope="col">Permissions</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var product in Model.Products)
+            @*@foreach (var product in Model.Products)
             {
                 <tr>
                     <td>@product.Name</td>
@@ -26,7 +26,7 @@
                         <button type="submit" class="btn btn-primary" asp-page-handler="Delete" asp-route-productid="@product.Id">Delete</button>
                     </td>
                 </tr>
-            }
+            }*@
         </tbody>
     </table>
 </form>
