@@ -27,7 +27,7 @@ namespace ContosoPets.Ui.Areas.Admin.Pages.Products
 
             await _productService.CreateProduct(Product);
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Products/Index");
         }
     }
 }

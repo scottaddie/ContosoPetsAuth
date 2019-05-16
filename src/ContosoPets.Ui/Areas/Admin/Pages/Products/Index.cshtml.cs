@@ -2,9 +2,9 @@
 using ContosoPets.Ui.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ContosoPets.Ui.Extensions;
 
 namespace ContosoPets.Ui.Areas.Admin.Pages.Products
 {
@@ -13,6 +13,7 @@ namespace ContosoPets.Ui.Areas.Admin.Pages.Products
         private readonly ProductService _productService;
 
         public string Error { get; set; }
+        public string AntiforgeryToken => HttpContext.GetAntiforgeryTokenForJs();
         public IEnumerable<Product> Products { get; private set; } = new List<Product>();
 
         public IndexModel(ProductService productService)
@@ -37,12 +38,18 @@ namespace ContosoPets.Ui.Areas.Admin.Pages.Products
         {
             return RedirectToPage("Edit", new { id = productId });
         }
-
-        public async Task<IActionResult> OnPostDelete(int productId)
+    
+        public async Task<IActionResult> OnDelete(int productId)
         {
-            await _productService.DeleteProduct(productId);
-
-            return RedirectToPage();
+            try
+            {
+                await _productService.DeleteProduct(productId);
+                return new NoContentResult();
+            }
+            catch
+            {
+                return new StatusCodeResult(500);
+            }
         }
     }
 }

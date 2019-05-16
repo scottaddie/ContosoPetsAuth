@@ -35,17 +35,18 @@ namespace ContosoPets.Ui
             });
 
             services.AddMvc()
-                .AddRazorPagesOptions(options =>
-                {
-                    options.Conventions.AuthorizeAreaFolder("Admin", "/Admin", "IsFTE");
-                })
+                //.AddRazorPagesOptions(options =>
+                //{
+                //    options.Conventions.AuthorizeAreaFolder("Admin", "/Admin", "IsFTE");
+                //})
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("IsFTE", policy =>
-                    policy.Requirements.Add(new FullTimeEmployeeRequirement()));
-            });
+            services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("IsFTE", policy =>
+            //        policy.Requirements.Add(new FullTimeEmployeeRequirement()));
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
