@@ -1,10 +1,10 @@
-﻿using ContosoPets.Ui.Models;
+﻿using ContosoPets.Ui.Extensions;
+using ContosoPets.Ui.Models;
 using ContosoPets.Ui.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ContosoPets.Ui.Extensions;
 
 namespace ContosoPets.Ui.Areas.Admin.Pages.Products
 {
@@ -33,12 +33,7 @@ namespace ContosoPets.Ui.Areas.Admin.Pages.Products
                 Error = "Unable to retrieve products.";
             }
         }
-
-        public IActionResult OnPostEdit(int productId)
-        {
-            return RedirectToPage("Edit", new { id = productId });
-        }
-    
+   
         public async Task<IActionResult> OnDelete(int productId)
         {
             try

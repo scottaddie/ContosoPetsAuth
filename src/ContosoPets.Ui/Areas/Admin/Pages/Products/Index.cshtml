@@ -21,7 +21,7 @@
                 <td>@product.Name</td>
                 <td>@product.Price.ToString("C")</td>
                 <td>
-                    <a asp-page-handler="Edit" asp-route-productid="@product.Id">Edit</a> |
+                    <a asp-page="Edit" asp-route-id="@product.Id">Edit</a> |
                     <a href="#" onclick="deleteProduct('@product.Id', antiForgeryToken())">Delete</a>
                 </td>
             </tr>
@@ -35,7 +35,7 @@
 
 @section Scripts
 {
-    <script src="~/js/product.js"></script>
+    <script src="~/js/product.js" asp-append-version="true"></script>
     <script language="javascript">
         const antiForgeryToken = () => '@Model.AntiforgeryToken';
     </script>
